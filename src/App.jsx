@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Learn from './Learn.jsx'
+import Account from './Account.jsx'
 
 const LETTERS = [['ا','Alif'],['ب','Ba'],['ت','Ta'],['ث','Tha'],['ج','Jeem'],['ح','Haa'],['خ','Khaa'],['د','Dal'],['ذ','Dhal'],['ر','Ra'],['ز','Zay'],['س','Seen'],['ش','Sheen'],['ص','Saad'],['ض','Daad'],['ط','Taa'],['ظ','Zaa'],['ع','Ain'],['غ','Ghain'],['ف','Fa'],['ق','Qaaf'],['ك','Kaaf'],['ل','Lam'],['م','Meem'],['ن','Noon'],['ه','Ha'],['و','Waw'],['ي','Ya']]
 const COURSES = [
@@ -77,6 +77,6 @@ export function Home() {
   </>
 }
 
-   export default function App() {
-     return window.location.pathname.startsWith('/learn') ? <Learn /> : <Home />
-   }
+ export default function App() {
+  return window.location.pathname.startsWith('/learn') ? <Account /> : <Home />
+}

@@ -1,0 +1,7 @@
+.acct{max-width:440px;margin:0 auto;padding:2rem 1.2rem;text-align:center;display:grid;gap:1rem;justify-items:center}
+.acct.wide{max-width:760px}.acct form{display:grid;gap:.7rem;width:100%}
+.acct input{border:2px solid var(--g);padding:.8rem 1rem;border-radius:14px;font:inherit;width:100%}
+.kids{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+.kid{display:grid;gap:.3rem;font-size:2.4rem;background:var(--mint);border:3px solid var(--g);border-radius:var(--r);padding:1.2rem 1.8rem;cursor:pointer}
+.kid b{font:700 1.2rem Fredoka,sans-serif}.addkid{display:flex!important;gap:.6rem;max-width:420px}
+.dtable{display:grid;gap:.8rem;width:100%}.drow{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;align-items:center;justify-content:center;background:var(--mint);border-radius:var(--r);padding:1rem}
