@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Learn from './Learn.jsx'
 
 const LETTERS = [['ا','Alif'],['ب','Ba'],['ت','Ta'],['ث','Tha'],['ج','Jeem'],['ح','Haa'],['خ','Khaa'],['د','Dal'],['ذ','Dhal'],['ر','Ra'],['ز','Zay'],['س','Seen'],['ش','Sheen'],['ص','Saad'],['ض','Daad'],['ط','Taa'],['ظ','Zaa'],['ع','Ain'],['غ','Ghain'],['ف','Fa'],['ق','Qaaf'],['ك','Kaaf'],['ل','Lam'],['م','Meem'],['ن','Noon'],['ه','Ha'],['و','Waw'],['ي','Ya']]
 const COURSES = [
@@ -15,10 +16,10 @@ const FAQ = [
 const say = (t) => { try { const u = new SpeechSynthesisUtterance(t); u.lang = 'ar-SA'; u.rate = .7; speechSynthesis.cancel(); speechSynthesis.speak(u) } catch {} }
 const pick = (n) => [...LETTERS].sort(() => Math.random() - .5).slice(0, n)
 
-function Nav() {
-  return <header className="nav"><a href="#top" className="brand"><img src="/logo.png" alt="Al-Wahab Academy"/></a>
-    <nav><a href="#play">Play</a><a href="#courses">Courses</a><a href="#faq">FAQ</a><a className="btn small" href="#trial">Free trial</a></nav></header>
-}
+   function Nav() {
+     return <header className="nav"><a href="/" className="brand"><img src="/logo.png" alt="Al-Wahab Academy"/></a>
+       <nav><a href="/learn">Learn</a><a href="/#play">Play</a><a href="/#courses">Courses</a><a href="/#faq">FAQ</a><a className="btn small" href="/#trial">Free trial</a></nav></header>
+   }
 
 function Hero() {
   return <section className="hero" id="top"><div className="wrap hero-in">
@@ -62,7 +63,7 @@ function Trial() {
     {st==='error' && <p className="err">Something went wrong. Please try again.</p>}</form>
 }
 
-export default function App() {
+export function Home() {
   return <>
     <Nav/><Hero/>
     <section className="play" id="play"><div className="wrap two"><Letters/><Quiz/></div></section>
@@ -75,3 +76,7 @@ export default function App() {
     <footer><img src="/logo.png" alt="" height="90"/><p>© {new Date().getFullYear()} Al-Wahab Academy</p></footer>
   </>
 }
+
+   export default function App() {
+     return window.location.pathname.startsWith('/learn') ? <Learn /> : <Home />
+   }
