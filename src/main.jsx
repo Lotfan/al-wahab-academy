@@ -6,4 +6,5 @@ import './learn.css'
 import './account.css'
 import './dashboard.css'
 import './roles.css'
+import './guardian.css'
 createRoot(document.getElementById('root')).render(<App />)

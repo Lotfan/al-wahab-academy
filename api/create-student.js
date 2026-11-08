@@ -23,6 +23,7 @@ export default async function handler(req, res) {
   const id = data.user.id
   const a = await admin.from('profiles').insert({ id, role: 'student', name })
   const b = await admin.from('students').insert({ id, teacher_id: u.user.id, name, username: un })
-  if (a.error || b.error) { await admin.auth.admin.deleteUser(id); return res.status(500).json({ error: 'Could not save the student.' }) }
-  return res.status(200).json({ ok: true })
+  const c = await admin.from('enrollments').insert({ teacher_id: u.user.id, student_id: id })
+  if (a.error || b.error || c.error) { await admin.auth.admin.deleteUser(id); return res.status(500).json({ error: 'Could not save the student.' }) }
+  return res.status(200).json({ ok: true, message: `Student created! Username: ${un}` })
 }

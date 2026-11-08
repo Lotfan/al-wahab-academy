@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { StudentPortal, TeacherPortal } from './Portal.jsx'
-
+   import { StudentPortal, TeacherPortal } from './Portal.jsx'
+   import { GuardianPortal } from './Guardian.jsx'
 const LETTERS = [['ا','Alif'],['ب','Ba'],['ت','Ta'],['ث','Tha'],['ج','Jeem'],['ح','Haa'],['خ','Khaa'],['د','Dal'],['ذ','Dhal'],['ر','Ra'],['ز','Zay'],['س','Seen'],['ش','Sheen'],['ص','Saad'],['ض','Daad'],['ط','Taa'],['ظ','Zaa'],['ع','Ain'],['غ','Ghain'],['ف','Fa'],['ق','Qaaf'],['ك','Kaaf'],['ل','Lam'],['م','Meem'],['ن','Noon'],['ه','Ha'],['و','Waw'],['ي','Ya']]
 const COURSES = [
   ['🌙','Noorani Qaida','Letters, harakat and joining, step by step. Perfect for first-time readers.','Ages 4-12'],
@@ -18,7 +18,7 @@ const pick = (n) => [...LETTERS].sort(() => Math.random() - .5).slice(0, n)
 
       function Nav() {
      return <header className="nav"><a href="/" className="brand"><img src="/logo.png" alt="Al-Wahab Academy"/></a>
-       <nav><a href="/#play">Play</a><a href="/#courses">Courses</a><a href="/#faq">FAQ</a>
+       <nav>    <a className="btn small light" href="/parent">Parent login</a><a href="/#play">Play</a><a href="/#courses">Courses</a><a href="/#faq">FAQ</a>
        <a className="btn small light" href="/teacher">Teacher login</a><a className="btn small" href="/student">Student login</a></nav></header>
    }
 
@@ -77,10 +77,10 @@ export function Home() {
     <footer><img src="/logo.png" alt="" height="90"/><p>© {new Date().getFullYear()} Al-Wahab Academy</p></footer>
   </>
 }
-
-    export default function App() {
+   export default function App() {
      const path = window.location.pathname
      if (path.startsWith('/teacher')) return <TeacherPortal />
+     if (path.startsWith('/parent')) return <GuardianPortal />
      if (path.startsWith('/student') || path.startsWith('/learn')) return <StudentPortal />
      return <Home />
    }

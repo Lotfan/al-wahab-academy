@@ -8,6 +8,6 @@ export async function loadProgress(id) {
   return { done: Object.fromEntries((l || []).map(r => [r.lesson_id, r.stars])), xp: s?.xp || 0, streak: s?.streak || 0, last: s?.last_day || '' }
 }
 export async function saveProgress(id, lessonId, p) {
-  await supabase.from('lesson_progress').upsert({ student_id: id, lesson_id: lessonId, stars: p.done[lessonId] })
+  await supabase.from('lesson_progress').upsert({ student_id: id, lesson_id: lessonId, stars: p.done[lessonId], updated_at: new Date().toISOString() })
   await supabase.from('students').update({ xp: p.xp, streak: p.streak, last_day: p.last }).eq('id', id)
 }
