@@ -1,0 +1,16 @@
+.dash{display:grid;gap:1.1rem}.dash .card{background:#fff;border-radius:var(--r);padding:1.1rem 1.3rem}.dash .card h3{margin-top:0}
+.hello{display:flex;justify-content:space-between;align-items:center;gap:1rem;background:linear-gradient(135deg,#000,var(--g));color:#fff;border-radius:28px;padding:1.5rem}
+.hello h1{margin:0;font-size:clamp(1.4rem,4vw,2rem)}.ttl{margin:.3rem 0;color:var(--gold);font:700 1.1rem Fredoka,sans-serif}
+.bar{height:12px;background:#ffffff33;border-radius:99px;overflow:hidden;min-width:160px}.bar i{display:block;height:100%;background:var(--gold);border-radius:99px;transition:width .5s}
+.bar.dark{background:var(--mint);flex:1}.bar.dark i{background:var(--g)}
+.ring{flex:none;width:112px;height:112px;border-radius:50%;display:grid;place-items:center}
+.ring span{width:84px;height:84px;border-radius:50%;background:#0b160d;display:grid;place-content:center;text-align:center;font:700 1.5rem Fredoka,sans-serif}.ring small{font-size:.7rem;font-weight:400}
+.cont{display:flex;justify-content:space-between;align-items:center;gap:1rem;background:var(--gold);color:var(--gd);border-radius:var(--r);padding:1.1rem 1.4rem}
+.cont h3{margin:0}.cont .btn{background:var(--gd);color:#fff}
+.stat4{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:.8rem}
+.stat4 div{background:#fff;border-radius:var(--r);padding:.9rem;text-align:center;font-size:.9rem}.stat4 b{display:block;font:700 1.6rem Fredoka,sans-serif;color:var(--g)}
+.week{display:flex;justify-content:space-between;gap:.3rem;text-align:center;font-size:.8rem}
+.week span{display:grid;gap:.3rem;justify-items:center}.week i{width:36px;height:36px;border-radius:50%;background:var(--mint);display:grid;place-items:center;font-style:normal;color:#fff}
+.week .on i{background:var(--g)}.week .today i{outline:3px solid var(--gold)}
+.lv{display:flex;align-items:center;gap:.8rem;margin:.6rem 0}.lv span{flex:0 0 44%}
+@media(max-width:600px){.hello{flex-direction:column;text-align:center}.lv{flex-wrap:wrap}.lv span{flex-basis:100%}}

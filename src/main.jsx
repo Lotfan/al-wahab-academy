@@ -4,4 +4,6 @@ import App from './App.jsx'
 import './styles.css'
 import './learn.css'
 import './account.css'
+import './dashboard.css'
+import './roles.css'
 createRoot(document.getElementById('root')).render(<App />)

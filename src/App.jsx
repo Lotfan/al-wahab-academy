@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Account from './Account.jsx'
+import { StudentPortal, TeacherPortal } from './Portal.jsx'
 
 const LETTERS = [['ا','Alif'],['ب','Ba'],['ت','Ta'],['ث','Tha'],['ج','Jeem'],['ح','Haa'],['خ','Khaa'],['د','Dal'],['ذ','Dhal'],['ر','Ra'],['ز','Zay'],['س','Seen'],['ش','Sheen'],['ص','Saad'],['ض','Daad'],['ط','Taa'],['ظ','Zaa'],['ع','Ain'],['غ','Ghain'],['ف','Fa'],['ق','Qaaf'],['ك','Kaaf'],['ل','Lam'],['م','Meem'],['ن','Noon'],['ه','Ha'],['و','Waw'],['ي','Ya']]
 const COURSES = [
@@ -16,14 +16,15 @@ const FAQ = [
 const say = (t) => { try { const u = new SpeechSynthesisUtterance(t); u.lang = 'ar-SA'; u.rate = .7; speechSynthesis.cancel(); speechSynthesis.speak(u) } catch {} }
 const pick = (n) => [...LETTERS].sort(() => Math.random() - .5).slice(0, n)
 
-   function Nav() {
+      function Nav() {
      return <header className="nav"><a href="/" className="brand"><img src="/logo.png" alt="Al-Wahab Academy"/></a>
-       <nav><a href="/learn">Learn</a><a href="/#play">Play</a><a href="/#courses">Courses</a><a href="/#faq">FAQ</a><a className="btn small" href="/#trial">Free trial</a></nav></header>
+       <nav><a href="/#play">Play</a><a href="/#courses">Courses</a><a href="/#faq">FAQ</a>
+       <a className="btn small light" href="/teacher">Teacher login</a><a className="btn small" href="/student">Student login</a></nav></header>
    }
 
 function Hero() {
   return <section className="hero" id="top"><div className="wrap hero-in">
-    <div><h1>Reading the Quran starts with one happy letter.</h1>
+    <div><h1>Welcome to Al-Wahab Academy.</h1>
     <p>Live one-to-one Qaida and Quran classes for kids, with kind teachers who make every lesson feel like a win.</p>
     <a className="btn" href="#trial">Book a free class</a> <a className="btn ghost" href="#play">Try a letter game</a></div>
     <div className="hero-letters" aria-hidden="true">{['ب','ا','م','ن','ح','س'].map((l,i)=><span key={i} style={{'--i':i}}>{l}</span>)}</div>
@@ -77,6 +78,9 @@ export function Home() {
   </>
 }
 
- export default function App() {
-  return window.location.pathname.startsWith('/learn') ? <Account /> : <Home />
-}
+    export default function App() {
+     const path = window.location.pathname
+     if (path.startsWith('/teacher')) return <TeacherPortal />
+     if (path.startsWith('/student') || path.startsWith('/learn')) return <StudentPortal />
+     return <Home />
+   }

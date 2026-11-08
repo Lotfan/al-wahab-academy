@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo } from 'react'
 import { loadProgress, saveProgress } from './supabase.js'
+import Dashboard from './Dashboard.jsx'
 
 // ---- Put your real Zoom / Google Meet link here ----
 const LIVE_CLASS_URL = 'https://meet.google.com/'
@@ -67,14 +68,10 @@ export default function Learn({ student, onBack }) {
   if (!ready) return <p className="wrap">Loading…</p>
   return <div className="learn">
     <header className="lhead"><a href="/"><img src="/logo.png" alt="Al-Wahab Academy" height="56"/></a>
-      <div className="stats"><button className="link" style={{float:"none",color:"#d9b26f"}} onClick={onBack}>Switch child</button><span>🔥 {p.streak}</span><span>⭐ {p.xp} XP</span></div></header>
+      <div className="stats"><button className="link" style={{float:"none",color:"#d9b26f"}} onClick={onBack}>Log out</button><span>🔥 {p.streak}</span><span>⭐ {p.xp} XP</span></div></header>
     <main className="wrap">
       {cur ? <Player key={cur.id} lesson={cur} onFinish={finish} onExit={() => setCur(null)} /> : <>
-        <h1>Hello, {student.name}!</h1>
-        <p>Finish a lesson to unlock the next one. Practice a little every day to grow your 🔥 streak.</p>
-        <div className="live"><div><b>Live class today?</b><br/>Join your teacher for a one-to-one lesson.</div>
-          <a className="btn" href={LIVE_CLASS_URL} target="_blank" rel="noreferrer">Join live class</a></div>
-        <div className="badges">{badges.map(([e, n, on]) => <span key={n} className={on ? 'on' : ''} title={n}>{e}<small>{n}</small></span>)}</div>
+          <Dashboard student={student} p={p} levels={LEVELS} all={ALL} badges={badges} unlocked={unlocked} onStart={setCur} liveUrl={LIVE_CLASS_URL} />
         {LEVELS.map(lv => <section key={lv.title}><h2>{lv.emoji} {lv.title}</h2>
           <div className="lessons">{lv.lessons.map(l => { const ok = unlocked(l.id), s = p.done[l.id]
             return <button key={l.id} className={'lesson' + (s ? ' done' : '')} disabled={!ok} onClick={() => setCur(l)}>
